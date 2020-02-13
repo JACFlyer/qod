@@ -15,7 +15,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.lang.NonNull;
 
-@Entity 
+
+@Entity
 @Table(
     indexes = {
         @Index(columnList = "created")
