@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.qod.model.entity;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,7 +62,7 @@ public class Quote {
   private String text;
 
 
-  // Mant to MAny Entity code
+  // Many to Many Entity code
   @NonNull
   @ManyToMany(fetch = FetchType.LAZY,
       cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
@@ -75,7 +77,7 @@ public class Quote {
   )
 
   @OrderBy("name ASC")
-  private List<Source> sources = new LinkedList<>();
+  private Set<Source> sources = new LinkedHashSet<>();
 
   // Many to Many code end
 
@@ -105,7 +107,8 @@ public class Quote {
   }
 
   @NonNull
-  public List<Source> getSources() {
+  public Set<Source> getSources()
+  {
     return sources;
   }
 }
