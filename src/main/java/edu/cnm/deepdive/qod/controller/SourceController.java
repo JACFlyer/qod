@@ -33,12 +33,6 @@ public class SourceController {
     this.repository = repository;
   }
 
-//   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
-//      produces = MediaType.APPLICATION_JSON_VALUE)
-//  public Source post(@RequestBody Source source) {
-//    return repository.save(source);
-//
-//  }
 
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
