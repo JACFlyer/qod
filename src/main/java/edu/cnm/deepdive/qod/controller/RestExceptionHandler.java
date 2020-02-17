@@ -9,9 +9,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
+@ExceptionHandler(SearchTemToShortException.class)
+@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Search term too short")
+public void tooShort() {}
+
   @ExceptionHandler(NoSuchElementException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   public void notFound() {}
+
+  @ExceptionHandler(IllegalArgumentException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public void badRequest() {}
+
 
 }
 
