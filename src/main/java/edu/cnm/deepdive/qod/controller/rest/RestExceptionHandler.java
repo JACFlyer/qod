@@ -1,5 +1,6 @@
-package edu.cnm.deepdive.qod.controller;
+package edu.cnm.deepdive.qod.controller.rest;
 
+import edu.cnm.deepdive.qod.controller.SearchTemToShortException;
 import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,11 +22,4 @@ public void tooShort() {}
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public void badRequest() {}
 
-
 }
-
-
-
-
-
-

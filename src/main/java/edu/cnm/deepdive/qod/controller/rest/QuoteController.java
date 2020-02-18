@@ -1,5 +1,6 @@
-package edu.cnm.deepdive.qod.controller;
+package edu.cnm.deepdive.qod.controller.rest;
 
+import edu.cnm.deepdive.qod.controller.SearchTemToShortException;
 import edu.cnm.deepdive.qod.model.entity.Quote;
 import edu.cnm.deepdive.qod.model.entity.Source;
 import edu.cnm.deepdive.qod.service.QuoteRepository;
@@ -41,7 +42,8 @@ public class QuoteController {
   }
 
 
-  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Quote> post(@RequestBody Quote quote) {
     quoteRepository.save(quote);
     return ResponseEntity.created(quote.getHref()).body(quote);
@@ -49,7 +51,7 @@ public class QuoteController {
 
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public Iterable<Quote> get(String fragment) {
+  public Iterable<Quote> get() {
     return quoteRepository.getAllByOrderByCreatedDesc();
   }
 
@@ -61,6 +63,14 @@ public class QuoteController {
     return quoteRepository.getAllByTextContainsOrderByTextAsc(fragment);
 }
 
+  @GetMapping(value = "/random", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Quote getRandom() {
+    return quoteRepository.getRandom().get();
+  }
+@GetMapping(value = "/random", produces = MediaType.TEXT_PLAIN_VALUE)
+public String getRandomPlain() {
+    return getRandom().getText();
+}
 
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public Quote get(@PathVariable UUID id) {
