@@ -1,14 +1,12 @@
 package edu.cnm.deepdive.qod.controller.rest;
 
 
-import edu.cnm.deepdive.qod.controller.SearchTemToShortException;
+import edu.cnm.deepdive.qod.controller.exception.SearchTemToShortException;
 import edu.cnm.deepdive.qod.model.entity.Quote;
 import edu.cnm.deepdive.qod.model.entity.Source;
 import edu.cnm.deepdive.qod.service.SourceRepository;
-import java.net.URI;
 import java.util.Set;
 import java.util.UUID;
-import org.aspectj.apache.bcel.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/sources")

@@ -27,5 +27,9 @@ public class QuotePageController {
     return "random";
 
   }
-
+@GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+  public String getAll(Model model) {
+    model.addAttribute("quotes", repository.getAllByOrderByCreatedDesc());
+      return "list";
+}
 }
